@@ -10,5 +10,6 @@ const debtValidationMiddleware_1 = __importDefault(require("../../middlewares/de
 const debtRouter = (0, express_1.Router)();
 debtRouter.get('', (0, asyncWrapper_1.default)(debt_controller_1.getAllDebtsController));
 debtRouter.post('/', debtValidationMiddleware_1.default, (0, asyncWrapper_1.default)(debt_controller_1.addDebtController));
+debtRouter.post('/:id', (0, asyncWrapper_1.default)(debt_controller_1.notifyController));
 exports.default = debtRouter;
 //# sourceMappingURL=debts.js.map
