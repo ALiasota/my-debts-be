@@ -1,6 +1,6 @@
-import Debt from 'models/debt'
-import { IDebt } from 'types/debt.type'
-import { sendSMS } from 'smsService/twillo'
+import Debt from '../models/debt'
+import { IDebt } from '../types/debt.type'
+import { sendSMS } from '../smsService/twillo'
 
 export const getAllDebts = async (): Promise<IDebt[]> => {
   const debts = Debt.find()

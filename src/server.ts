@@ -2,7 +2,7 @@ import express, { NextFunction, Request, Response } from 'express'
 import cors from 'cors'
 import { config } from 'dotenv'
 import connectMongoose from './db/connection'
-import debtRouter from 'routes/api/debts'
+import debtRouter from './routes/api/debts'
 
 const app = express()
 config()

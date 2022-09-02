@@ -1,6 +1,6 @@
 import * as Joi from 'joi'
 import { Request, Response, NextFunction } from 'express'
-import { IDebt } from 'types/debt.type'
+import { IDebt } from '../types/debt.type'
 
 const debtValidationMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const schema: Joi.ObjectSchema<IDebt> = Joi.object({

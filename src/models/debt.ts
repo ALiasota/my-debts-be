@@ -1,5 +1,5 @@
 import { Model, model, Schema } from 'mongoose'
-import { IDebt } from 'types/debt.type'
+import { IDebt } from '../types/debt.type'
 
 const deftSchema = new Schema<IDebt>(
   {
