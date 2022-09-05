@@ -52,12 +52,12 @@ const notifyExtra = (id, extraPayment) => __awaiter(void 0, void 0, void 0, func
         const currentValues = (0, calcService_1.calc)(outstandingAmount, minimalPayment, interestRate);
         const newValues = (0, calcService_1.calc)(outstandingAmount, newPayment, interestRate);
         const saveAmount = currentValues.totalSum - newValues.totalSum;
-        if (newValues.monthes > currentValues.monthes) {
-            saveMonthes = currentValues.monthes - newValues.monthes + 12;
+        if (newValues.months > currentValues.months) {
+            saveMonthes = currentValues.months - newValues.months + 12;
             saveYears = currentValues.years - newValues.years - 1;
         }
         else {
-            saveMonthes = currentValues.monthes - newValues.monthes;
+            saveMonthes = currentValues.months - newValues.months;
             saveYears = currentValues.years - newValues.years;
         }
         yield (0, twillo_1.sendExtraNotify)({

@@ -2,12 +2,12 @@ export const calc = (debtSum: number, payment: number, rate: number) => {
   let month = 0
   let sum = debtSum
   do {
-    const debtBody = payment - (sum * rate) / 100 / 12
-    sum = sum - debtBody
+    const paymentBody = payment - (sum * rate) / 100 / 12
+    sum = sum - paymentBody
     month += 1
-  } while (sum > 0)
+  } while (sum > payment)
   const years = Math.floor(month / 12)
-  const monthes = month - years * 12
-  const totalSum = month * payment
-  return { years, monthes, totalSum }
+  const months = month - years * 12
+  const totalSum = Math.ceil(month * payment + sum)
+  return { years, months, totalSum }
 }

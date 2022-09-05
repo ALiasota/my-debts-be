@@ -38,11 +38,11 @@ export const notifyExtra = async (id: string, extraPayment: number) => {
     const currentValues = calc(outstandingAmount, minimalPayment, interestRate!)
     const newValues = calc(outstandingAmount, newPayment, interestRate!)
     const saveAmount = currentValues.totalSum - newValues.totalSum
-    if (newValues.monthes > currentValues.monthes) {
-      saveMonthes = currentValues.monthes - newValues.monthes + 12
+    if (newValues.months > currentValues.months) {
+      saveMonthes = currentValues.months - newValues.months + 12
       saveYears = currentValues.years - newValues.years - 1
     } else {
-      saveMonthes = currentValues.monthes - newValues.monthes
+      saveMonthes = currentValues.months - newValues.months
       saveYears = currentValues.years - newValues.years
     }
     await sendExtraNotify({
