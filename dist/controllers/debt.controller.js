@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.notifyController = exports.addDebtController = exports.getAllDebtsController = void 0;
+exports.notifyExtraController = exports.notifyController = exports.addDebtController = exports.getAllDebtsController = void 0;
 const debt_service_1 = require("../services/debt.service");
 const getAllDebtsController = () => __awaiter(void 0, void 0, void 0, function* () {
     const debts = yield (0, debt_service_1.getAllDebts)();
@@ -28,4 +28,11 @@ const notifyController = (req) => __awaiter(void 0, void 0, void 0, function* ()
     return response;
 });
 exports.notifyController = notifyController;
+const notifyExtraController = (req) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const request = req.body;
+    const response = yield (0, debt_service_1.notifyExtra)(id, request.extraPayment);
+    return response;
+});
+exports.notifyExtraController = notifyExtraController;
 //# sourceMappingURL=debt.controller.js.map
