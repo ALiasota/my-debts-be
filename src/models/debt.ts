@@ -26,6 +26,10 @@ const deftSchema = new Schema<IDebt>(
     minimalPayment: {
       type: Number,
       required: true
+    },
+    expiryDate: {
+      type: String,
+      required: true
     }
   },
   { versionKey: false, timestamps: true }

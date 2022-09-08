@@ -10,6 +10,7 @@ const debtValidationMiddleware = (req: Request, res: Response, next: NextFunctio
     outstandingAmount: Joi.number().min(1).required(),
     interestRate: Joi.number().min(1).max(100).required(),
     minimalPayment: Joi.number().min(1).required(),
+    expiryDate: Joi.date().required(),
     _id: Joi.string()
   })
   const valid = schema.validate(req.body)

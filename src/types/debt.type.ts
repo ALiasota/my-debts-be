@@ -7,5 +7,6 @@ export interface IDebt extends Document {
   outstandingAmount: number
   interestRate?: number
   minimalPayment: number
+  expiryDate: string
   _id?: string
 }
