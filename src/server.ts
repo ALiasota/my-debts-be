@@ -3,14 +3,14 @@ import cors from 'cors'
 import { config } from 'dotenv'
 import connectMongoose from './db/connection'
 import debtRouter from './routes/api/debts'
-
+import agenda from './smsService/agenda'
 const app = express()
 config()
 app.use(cors())
 app.use(express.json())
 app.use('/api/debts', debtRouter)
 const port = process.env.PORT || 3021
-
+agenda.start()
 app.use((_: Request, res: Response) => {
   res.status(404).json({ message: 'Not found' })
 })

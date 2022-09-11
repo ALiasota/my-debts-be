@@ -28,7 +28,7 @@ const deftSchema = new Schema<IDebt>(
       required: true
     },
     expiryDate: {
-      type: Object,
+      type: Date,
       required: true
     }
   },

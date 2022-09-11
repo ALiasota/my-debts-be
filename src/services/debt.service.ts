@@ -1,7 +1,9 @@
+import { add } from 'date-fns'
 import Debt from '../models/debt'
 import { IDebt } from '../types/debt.type'
 import { sendNotify, sendExtraNotify } from '../smsService/twillo'
 import { calc } from '../calcService/calcService'
+import { agendaService } from '../smsService/agenda'
 export const getAllDebts = async (): Promise<IDebt[]> => {
   const debts = await Debt.find()
   return debts
@@ -10,6 +12,20 @@ export const getAllDebts = async (): Promise<IDebt[]> => {
 export const addDebt = async (debt: IDebt): Promise<IDebt> => {
   const NewDebt = new Debt(debt)
   const response = await NewDebt.save()
+  const dates: { data: Date; days: number }[] = []
+  const sevenDays = add(new Date(debt.expiryDate), {
+    days: -7
+  })
+  const threeDays = add(new Date(debt.expiryDate), {
+    days: -3
+  })
+  const oneDay = add(new Date(debt.expiryDate), {
+    days: -1
+  })
+  dates.push({ data: sevenDays, days: 7 })
+  dates.push({ data: threeDays, days: 3 })
+  dates.push({ data: oneDay, days: 1 })
+  await agendaService(dates, debt.borrowerName)
   return response
 }
 
